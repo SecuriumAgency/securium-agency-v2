@@ -88,18 +88,18 @@ export default function ServicesShowcase() {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-display font-bold text-white uppercase tracking-tight">Pourquoi Choisir <span className="text-brand-500">Securium</span></h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-zinc-900/40 backdrop-blur-xl border border-white/5 p-8 rounded-3xl hover:-translate-y-2 hover:border-brand-500/30 transition-all duration-300">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-zinc-900/40 backdrop-blur-xl border border-white/5 p-8 rounded-3xl hover:-translate-y-2 hover:scale-[1.02] hover:border-brand-500/30 hover:shadow-[0_0_40px_rgba(245,158,11,0.15)] transition-all duration-300">
               <UserCheck className="w-12 h-12 text-brand-500 mb-6" />
               <h3 className="text-xl font-bold text-white mb-4 uppercase">Approche Sur-Mesure</h3>
               <p className="text-zinc-400 leading-relaxed">Chaque projet est unique. Que ce soit pour la configuration d&apos;un serveur Cloud, le déploiement de matériel ou la création de votre site web, j&apos;adapte mes solutions techniques à vos véritables besoins et à votre budget.</p>
             </motion.div>
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="bg-zinc-900/40 backdrop-blur-xl border border-white/5 p-8 rounded-3xl hover:-translate-y-2 hover:border-brand-500/30 transition-all duration-300">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="bg-zinc-900/40 backdrop-blur-xl border border-white/5 p-8 rounded-3xl hover:-translate-y-2 hover:scale-[1.02] hover:border-brand-500/30 hover:shadow-[0_0_40px_rgba(245,158,11,0.15)] transition-all duration-300">
               <MessageSquareText className="w-12 h-12 text-brand-500 mb-6" />
               <h3 className="text-xl font-bold text-white mb-4 uppercase">Transparence Totale</h3>
               <p className="text-zinc-400 leading-relaxed">Fini le jargon informatique incompréhensible. Je vous explique clairement chaque intervention ou étape de développement, et je vous tiens régulièrement informé de l&apos;avancée de vos projets.</p>
             </motion.div>
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="bg-zinc-900/40 backdrop-blur-xl border border-white/5 p-8 rounded-3xl hover:-translate-y-2 hover:border-brand-500/30 transition-all duration-300">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="bg-zinc-900/40 backdrop-blur-xl border border-white/5 p-8 rounded-3xl hover:-translate-y-2 hover:scale-[1.02] hover:border-brand-500/30 hover:shadow-[0_0_40px_rgba(245,158,11,0.15)] transition-all duration-300">
               <ShieldCheck className="w-12 h-12 text-brand-500 mb-6" />
               <h3 className="text-xl font-bold text-white mb-4 uppercase">Support & Suivi Continu</h3>
               <p className="text-zinc-400 leading-relaxed">Mon engagement ne s&apos;arrête pas à la livraison. Je reste à votre disposition pour assurer la maintenance technique, la résolution d&apos;incidents rapides et garantir la sécurité de vos données sur le long terme.</p>
