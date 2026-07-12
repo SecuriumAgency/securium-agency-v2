@@ -37,7 +37,7 @@ export default function MentionsLegalesPage() {
 
         <h2>Hébergement</h2>
         <p>
-          Ce site est hébergé par <strong>IONOS SARL</strong>, 7 Place de la Gare, 57200 Sarreguemines.
+          Ce site est hébergé par <strong>Vercel Inc.</strong>, 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis.
         </p>
 
         <h2>Propriété intellectuelle</h2>
