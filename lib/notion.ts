@@ -41,16 +41,29 @@ function slugify(value: string): string {
 
 export const getSeoPages = cache(async (): Promise<SeoPage[]> => {
   const databaseId = process.env.NOTION_DATABASE_ID;
-  if (!databaseId) return [];
+  console.log(
+    "[notion] diagnostic - API key present:",
+    Boolean(process.env.NOTION_API_KEY),
+    "| database id present:",
+    Boolean(databaseId)
+  );
+  if (!databaseId) {
+    console.warn("[notion] NOTION_DATABASE_ID is missing in this environment, skipping expertise pages.");
+    return [];
+  }
 
   try {
     const database = await notion.databases.retrieve({ database_id: databaseId });
     const dataSourceId = "data_sources" in database ? database.data_sources[0]?.id : undefined;
-    if (!dataSourceId) return [];
+    if (!dataSourceId) {
+      console.warn("[notion] database has no data source, skipping expertise pages.");
+      return [];
+    }
 
     const response = await notion.dataSources.query({ data_source_id: dataSourceId });
+    console.log("[notion] rows fetched from data source:", response.results.length);
 
-    return response.results
+    const pages = response.results
       .filter((page): page is PageObjectResponse => page.object === "page" && "properties" in page)
       .map((page) => ({
         slug: slugify(extractText(findProperty(page.properties, "Slug"))),
@@ -59,6 +72,9 @@ export const getSeoPages = cache(async (): Promise<SeoPage[]> => {
         description: extractText(findProperty(page.properties, "MetaDescription")).trim(),
       }))
       .filter((entry) => entry.slug.length > 0);
+
+    console.log("[notion] valid expertise pages resolved:", pages.map((p) => p.slug));
+    return pages;
   } catch (error) {
     console.warn("[notion] getSeoPages failed, skipping expertise pages:", error);
     return [];
