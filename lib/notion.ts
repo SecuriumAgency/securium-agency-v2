@@ -28,6 +28,17 @@ function findProperty(
   return key ? properties[key] : undefined;
 }
 
+// Normalise une valeur Notion libre (majuscules, accents, espaces) en slug d'URL valide.
+function slugify(value: string): string {
+  return value
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 export const getSeoPages = cache(async (): Promise<SeoPage[]> => {
   const databaseId = process.env.NOTION_DATABASE_ID;
   if (!databaseId) return [];
@@ -42,7 +53,7 @@ export const getSeoPages = cache(async (): Promise<SeoPage[]> => {
     return response.results
       .filter((page): page is PageObjectResponse => page.object === "page" && "properties" in page)
       .map((page) => ({
-        slug: extractText(findProperty(page.properties, "Slug")).trim(),
+        slug: slugify(extractText(findProperty(page.properties, "Slug"))),
         keyword: extractText(findProperty(page.properties, "TargetKeyword")).trim(),
         title: extractText(findProperty(page.properties, "MetaTitle")).trim(),
         description: extractText(findProperty(page.properties, "MetaDescription")).trim(),
