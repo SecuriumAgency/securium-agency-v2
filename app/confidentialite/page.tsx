@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function Confidentialite() {
   return (
-    <main className="min-h-screen bg-black text-zinc-300 pt-32 pb-24 px-4">
+    <div className="min-h-screen bg-black text-zinc-300 pt-32 pb-24 px-4">
       <div className="max-w-4xl mx-auto space-y-12">
         <h1 className="text-4xl font-bold text-white mb-12 border-b border-white/10 pb-6 tracking-tight">Politique de Confidentialité</h1>
 
@@ -51,6 +51,6 @@ export default function Confidentialite() {
           <p>Dernière mise à jour : 20/06/2026</p>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

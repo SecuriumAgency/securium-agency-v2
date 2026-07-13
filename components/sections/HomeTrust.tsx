@@ -34,7 +34,7 @@ export default function HomeTrust() {
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
           {TESTIMONIALS.map((testimonial) => (
-            <div
+            <article
               key={testimonial.author}
               className="glass-panel flex flex-col gap-4 p-8 transition-all duration-500 hover:-translate-y-2 hover:border-brand-500/30 hover:bg-white/[0.04]"
             >
@@ -43,7 +43,7 @@ export default function HomeTrust() {
               <span className="mt-auto text-xs font-semibold tracking-wide text-zinc-500">
                 {testimonial.author}
               </span>
-            </div>
+            </article>
           ))}
         </div>
       </div>

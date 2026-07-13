@@ -39,7 +39,7 @@ export default function HomeServices() {
 
         <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3">
           {SERVICES.map((service) => (
-            <div
+            <article
               key={service.title}
               className="glass-panel flex flex-col items-center p-10 text-center transition-all duration-500 hover:-translate-y-2 hover:border-brand-500/30 hover:bg-white/[0.04]"
             >
@@ -48,7 +48,7 @@ export default function HomeServices() {
                 {service.title}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-zinc-400">{service.description}</p>
-            </div>
+            </article>
           ))}
         </div>
       </div>

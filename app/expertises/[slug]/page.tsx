@@ -16,11 +16,25 @@ export async function generateMetadata({
   const pages = await getSeoPages();
   const page = pages.find((p) => p.slug === slug);
 
+  const title = page?.title || "Expertise | Securium Agency";
+  const description =
+    page?.description ||
+    "Découvrez notre expertise sur-mesure en IT, cybersécurité et développement web.";
+
   return {
-    title: page?.title || "Expertise | Securium Agency",
-    description:
-      page?.description ||
-      "Découvrez notre expertise sur-mesure en IT, cybersécurité et développement web.",
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      url: `https://www.securium-agency.fr/expertises/${slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   };
 }
 
@@ -38,7 +52,7 @@ export default async function ExpertisePage({
   }
 
   return (
-    <main className="min-h-screen bg-black text-zinc-300 pt-32 pb-24 px-4">
+    <div className="min-h-screen bg-black text-zinc-300 pt-32 pb-24 px-4">
       <div className="max-w-4xl mx-auto">
         {page.keyword && (
           <span className="text-brand-500 text-sm font-bold uppercase tracking-wider">
@@ -52,6 +66,6 @@ export default async function ExpertisePage({
           <p className="text-xl text-zinc-400 leading-relaxed">{page.description}</p>
         )}
       </div>
-    </main>
+    </div>
   );
 }

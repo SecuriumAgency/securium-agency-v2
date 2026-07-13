@@ -6,7 +6,7 @@ import { Clock, ArrowUpRight, Mail, Sparkles, Terminal, ShieldAlert, Zap, Target
 
 export default function BlogShowcase() {
   return (
-    <main className="min-h-screen bg-black text-zinc-300 pt-32 pb-24 overflow-hidden relative">
+    <div className="min-h-screen bg-black text-zinc-300 pt-32 pb-24 overflow-hidden relative">
       {/* Halos d'ambiance 3D - Optimisation du DOM via pointer-events-none */}
       <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-brand-500/10 blur-[150px] rounded-full pointer-events-none z-0"></div>
       <div className="absolute bottom-1/4 left-1/4 w-[800px] h-[800px] bg-brand-500/5 blur-[150px] rounded-full pointer-events-none z-0"></div>
@@ -130,6 +130,6 @@ export default function BlogShowcase() {
         </motion.div>
 
       </div>
-    </main>
+    </div>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -19,10 +20,12 @@ export function Header() {
     <header className="fixed top-0 w-full z-[100] bg-black/20 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <Link href="/" prefetch={false} aria-label="Retour à l'accueil Securium">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src="/logo/securium-favicon.png"
-            alt="Securium"
+            alt="Securium Agency - Expertise IT et cybersécurité"
+            width={80}
+            height={80}
+            priority
             className="w-16 h-16 md:w-20 md:h-20 object-contain object-left drop-shadow-[0_0_15px_rgba(245,158,11,0.5)] transition-transform hover:scale-110"
           />
         </Link>

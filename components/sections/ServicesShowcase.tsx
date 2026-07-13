@@ -6,7 +6,7 @@ import { Cpu, MonitorSmartphone, Megaphone, UserCheck, MessageSquareText, Shield
 
 export default function ServicesShowcase() {
   return (
-    <main className="min-h-screen bg-black text-zinc-300 pt-32 pb-24 overflow-hidden relative">
+    <div className="min-h-screen bg-black text-zinc-300 pt-32 pb-24 overflow-hidden relative">
       {/* Halos d'ambiance globaux */}
       <div className="fixed top-0 left-1/4 w-[800px] h-[800px] bg-brand-500/5 blur-[150px] rounded-full pointer-events-none z-0"></div>
 
@@ -124,6 +124,6 @@ export default function ServicesShowcase() {
         </motion.div>
 
       </div>
-    </main>
+    </div>
   );
 }

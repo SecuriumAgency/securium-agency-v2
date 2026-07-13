@@ -4,7 +4,7 @@ import { Mail, MapPin, Phone } from 'lucide-react';
 
 export default function ContactShowcase() {
   return (
-    <main className="min-h-screen bg-black text-zinc-300 pt-32 pb-24 px-4">
+    <div className="min-h-screen bg-black text-zinc-300 pt-32 pb-24 px-4">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-start">
         {/* Colonne Gauche : Infos */}
         <div className="space-y-8">
@@ -20,6 +20,6 @@ export default function ContactShowcase() {
         {/* Colonne Droite : Formulaire */}
         <ContactForm />
       </div>
-    </main>
+    </div>
   );
 }

@@ -1,4 +1,6 @@
 import type { MetadataRoute } from "next";
+import { blogArticles } from "@/lib/blog-data";
+import { getSeoPages } from "@/lib/notion";
 
 export const dynamic = "force-static";
 
@@ -19,11 +21,28 @@ const ROUTES: {
   { path: "/cgv", changeFrequency: "yearly", priority: 0.2 },
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  return ROUTES.map((route) => ({
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const staticEntries = ROUTES.map((route) => ({
     url: `${SITE_URL}${route.path}`,
     lastModified: new Date(),
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }));
+
+  const blogEntries = blogArticles.map((article) => ({
+    url: `${SITE_URL}/blog/${article.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  const expertisePages = await getSeoPages();
+  const expertiseEntries = expertisePages.map((page) => ({
+    url: `${SITE_URL}/expertises/${page.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticEntries, ...blogEntries, ...expertiseEntries];
 }

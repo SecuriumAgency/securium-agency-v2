@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { blogArticles, getArticleBySlug } from '@/lib/blog-data';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -5,6 +6,37 @@ import { ArrowLeft, Clock, Sparkles } from 'lucide-react';
 
 export function generateStaticParams() {
   return blogArticles.map((article) => ({ slug: article.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const article = getArticleBySlug(slug);
+
+  if (!article) {
+    return { title: "Article introuvable | Securium Agency" };
+  }
+
+  const title = `${article.title} | Securium Agency`;
+
+  return {
+    title,
+    description: article.excerpt,
+    openGraph: {
+      title,
+      description: article.excerpt,
+      type: "article",
+      url: `https://www.securium-agency.fr/blog/${article.slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: article.excerpt,
+    },
+  };
 }
 
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -16,7 +48,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   }
 
   return (
-    <main className="min-h-screen bg-black text-zinc-300 pt-32 pb-24 relative overflow-hidden">
+    <div className="min-h-screen bg-black text-zinc-300 pt-32 pb-24 relative overflow-hidden">
       {/* Halos 3D */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-500/10 blur-[150px] rounded-full pointer-events-none z-0"></div>
 
@@ -63,6 +95,6 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
       </article>
-    </main>
+    </div>
   );
 }

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -12,10 +13,11 @@ export function Footer() {
           {/* Colonne Marque */}
           <div className="md:col-span-5">
             <Link href="/" className="inline-block mb-6">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/logo/securium-favicon.png"
-                alt="Securium Logo"
+                alt="Securium Agency - Expertise IT et cybersécurité"
+                width={64}
+                height={64}
                 className="w-16 h-16 object-contain drop-shadow-[0_0_15px_rgba(245,158,11,0.3)]"
               />
             </Link>
@@ -25,14 +27,14 @@ export function Footer() {
           </div>
 
           {/* Colonne Navigation */}
-          <div className="md:col-span-3 md:col-start-7">
+          <nav className="md:col-span-3 md:col-start-7" aria-label="Navigation du pied de page">
             <h4 className="text-white font-bold tracking-widest uppercase mb-6 text-sm">Navigation</h4>
             <ul className="space-y-4">
               <li><Link href="/services" className="text-zinc-400 hover:text-brand-500 transition-colors">Nos Services</Link></li>
               <li><Link href="/blog" className="text-zinc-400 hover:text-brand-500 transition-colors">Blog</Link></li>
               <li><Link href="/about" className="text-zinc-400 hover:text-brand-500 transition-colors">À Propos</Link></li>
             </ul>
-          </div>
+          </nav>
 
           {/* Colonne Contact */}
           <div className="md:col-span-3">

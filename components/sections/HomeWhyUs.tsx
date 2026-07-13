@@ -44,7 +44,7 @@ export default function HomeWhyUs() {
 
         <div className="mt-12 grid grid-cols-1 gap-6 text-left sm:grid-cols-2 lg:grid-cols-3">
           {REASONS.map(({ icon: Icon, title, description }) => (
-            <div
+            <article
               key={title}
               className="glass-panel p-8 transition-all duration-500 hover:-translate-y-2 hover:border-brand-500/30 hover:bg-white/[0.04]"
             >
@@ -53,7 +53,7 @@ export default function HomeWhyUs() {
                 {title}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-zinc-400">{description}</p>
-            </div>
+            </article>
           ))}
         </div>
       </div>
