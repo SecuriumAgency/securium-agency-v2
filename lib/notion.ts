@@ -18,6 +18,16 @@ function extractText(property: PageObjectResponse["properties"][string] | undefi
   return "";
 }
 
+// Tolère les variantes de nommage de colonnes Notion (espaces superflus, suffixes type "Slug (titre)").
+function findProperty(
+  properties: PageObjectResponse["properties"],
+  name: string
+): PageObjectResponse["properties"][string] | undefined {
+  const target = name.trim().toLowerCase();
+  const key = Object.keys(properties).find((k) => k.trim().toLowerCase().startsWith(target));
+  return key ? properties[key] : undefined;
+}
+
 export const getSeoPages = cache(async (): Promise<SeoPage[]> => {
   const databaseId = process.env.NOTION_DATABASE_ID;
   if (!databaseId) return [];
@@ -32,10 +42,10 @@ export const getSeoPages = cache(async (): Promise<SeoPage[]> => {
     return response.results
       .filter((page): page is PageObjectResponse => page.object === "page" && "properties" in page)
       .map((page) => ({
-        slug: extractText(page.properties["Slug"]).trim(),
-        keyword: extractText(page.properties["TargetKeyword"]).trim(),
-        title: extractText(page.properties["MetaTitle"]).trim(),
-        description: extractText(page.properties["MetaDescription"]).trim(),
+        slug: extractText(findProperty(page.properties, "Slug")).trim(),
+        keyword: extractText(findProperty(page.properties, "TargetKeyword")).trim(),
+        title: extractText(findProperty(page.properties, "MetaTitle")).trim(),
+        description: extractText(findProperty(page.properties, "MetaDescription")).trim(),
       }))
       .filter((entry) => entry.slug.length > 0);
   } catch (error) {
