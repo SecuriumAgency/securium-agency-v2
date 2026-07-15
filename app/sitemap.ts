@@ -33,7 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${SITE_URL}/blog/${article.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
-    priority: 0.6,
+    priority: 0.8,
   }));
 
   const expertisePages = await getSeoPages();
