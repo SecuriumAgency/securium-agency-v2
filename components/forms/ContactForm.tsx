@@ -39,6 +39,16 @@ export default function ContactForm() {
     setSubmitError(null);
 
     try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Request failed");
+      }
+
       router.push("/contact/success");
     } catch {
       setSubmitError("Une erreur est survenue. Merci de réessayer ou de nous écrire directement.");
