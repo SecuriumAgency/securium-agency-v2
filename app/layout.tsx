@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import ParticleBackground from "@/components/3d/ParticleBackground";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const spaceGrotesk = Space_Grotesk({
@@ -50,6 +51,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className={`${inter.variable} ${inter.className} ${spaceGrotesk.variable} ${syne.variable} flex flex-col min-h-screen`}>
+        <GoogleTagManager gtmId="GTM-PFWC2XW5" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
