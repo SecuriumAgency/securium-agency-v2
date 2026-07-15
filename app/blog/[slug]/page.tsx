@@ -47,8 +47,48 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     notFound();
   }
 
+  const pageUrl = `https://www.securium-agency.fr/blog/${article.slug}`;
+
+  const schemaData = [
+    article.datePublished
+      ? {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: article.title,
+          description: article.excerpt,
+          image: "https://www.securium-agency.fr/logo.png",
+          datePublished: article.datePublished,
+          dateModified: article.datePublished,
+          author: { "@type": "Organization", name: "Securium Agency", url: "https://www.securium-agency.fr" },
+          publisher: {
+            "@type": "Organization",
+            name: "Securium Agency",
+            logo: { "@type": "ImageObject", url: "https://www.securium-agency.fr/logo.png" },
+          },
+          mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
+        }
+      : null,
+    article.faq?.length
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: article.faq.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: { "@type": "Answer", text: item.answer },
+          })),
+        }
+      : null,
+  ].filter(Boolean);
+
   return (
     <div className="min-h-screen bg-black text-zinc-300 pt-32 pb-24 relative overflow-hidden">
+      {schemaData.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        />
+      )}
       {/* Halos 3D */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-500/10 blur-[150px] rounded-full pointer-events-none z-0"></div>
 
@@ -79,7 +119,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
         {/* Corps de l'article - Typographie Premium */}
         <div
-          className="prose prose-invert prose-lg max-w-none prose-headings:font-display prose-headings:text-white prose-headings:font-bold prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-brand-500 hover:prose-a:text-brand-400 prose-strong:text-white"
+          className="prose prose-invert prose-lg max-w-none prose-headings:font-display prose-headings:text-brand-500 prose-headings:font-bold prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-p:text-zinc-400 prose-p:leading-relaxed prose-a:text-brand-500 hover:prose-a:text-brand-400 prose-strong:text-white prose-li:text-zinc-400"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
 

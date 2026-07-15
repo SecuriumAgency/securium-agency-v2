@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Clock, ArrowUpRight, Mail, Sparkles, Terminal, ShieldAlert, Zap, Target } from 'lucide-react';
+import { Clock, ArrowUpRight, Mail, Sparkles, Terminal, ShieldAlert, Zap, Target, Rocket } from 'lucide-react';
 
 export default function BlogShowcase() {
   return (
@@ -60,6 +60,24 @@ export default function BlogShowcase() {
 
         {/* --- GRILLE SECONDAIRE - H3 SEO LONGUE TRAÎNE --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-32">
+
+          {/* Article 0 : Architecture Headless Next.js */}
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <Link href="/blog/pourquoi-choisir-architecture-headless-nextjs" className="block group h-full">
+              <div className="bg-zinc-900/40 backdrop-blur-md border border-white/5 p-8 rounded-3xl hover:-translate-y-2 hover:border-brand-500/30 transition-all duration-300 flex flex-col h-full relative overflow-hidden">
+                <div className="absolute -top-10 -right-10 w-32 h-32 bg-brand-500/10 blur-[40px] group-hover:bg-brand-500/20 transition-all"></div>
+                <div className="flex justify-between items-center mb-8 relative z-10">
+                  <span className="text-brand-500 text-xs font-bold uppercase tracking-wider">Architecture Web</span>
+                  <Rocket className="w-5 h-5 text-zinc-600 group-hover:text-brand-500 transition-colors" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4 relative z-10 group-hover:text-brand-400 transition-colors">Architecture Headless Next.js 2026 : Le Guide B2B</h3>
+                <p className="text-zinc-400 mb-8 relative z-10 flex-grow">Pourquoi les dirigeants d&apos;entreprise migrent vers le Headless Next.js en 2026 : vitesse de chargement, sécurité renforcée et conversion B2B. Le guide complet.</p>
+                <div className="relative z-10 flex items-center text-sm font-bold text-zinc-500 group-hover:text-brand-500 transition-colors mt-auto">
+                  Lire le guide B2B <ArrowUpRight className="ml-1 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              </div>
+            </Link>
+          </motion.div>
 
           {/* Article 1 : Core Web Vitals */}
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
