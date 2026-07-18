@@ -3,8 +3,9 @@ import { Inter, Space_Grotesk, Syne } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import ParticleBackground from "@/components/3d/ParticleBackground";
+import ParticleBackground from "@/components/3d/ParticleBackgroundLazy";
 import { GoogleTagManager } from "@next/third-parties/google";
+import { getOrganizationJsonLd } from "@/lib/structured-data";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const spaceGrotesk = Space_Grotesk({
@@ -54,26 +55,7 @@ export default function RootLayout({
         <GoogleTagManager gtmId="GTM-PFWC2XW5" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "ProfessionalService",
-              name: "Securium Agency",
-              image: "https://www.securium-agency.fr/logo.png",
-              "@id": "https://www.securium-agency.fr",
-              url: "https://www.securium-agency.fr",
-              telephone: "0762588246",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "134 Avenue de la Libération, Bâtiment D",
-                addressLocality: "Montigny-lès-Cormeilles",
-                postalCode: "95370",
-                addressCountry: "FR",
-              },
-              priceRange: "€€",
-              sameAs: "https://www.securium-agency.fr",
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(getOrganizationJsonLd()) }}
         />
         <ParticleBackground />
         <Header />

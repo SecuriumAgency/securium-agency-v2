@@ -7,7 +7,7 @@ import Certifications from "@/components/sections/Certifications";
 export const metadata: Metadata = {
   title: "À Propos | Securium Agency",
   description:
-    "Technicien support et ingénieur technique de métier, j'ai fondé Securium pour proposer un accompagnement informatique de proximité aux professionnels et particuliers.",
+    "Rémy Hamoui, technicien IT indépendant, fonde Securium pour un accompagnement informatique sur-mesure. Découvrez mon expertise.",
 };
 
 export default function AboutPage() {

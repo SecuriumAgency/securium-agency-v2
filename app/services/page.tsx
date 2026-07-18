@@ -4,7 +4,7 @@ import ServicesShowcase from "@/components/sections/ServicesShowcase";
 export const metadata: Metadata = {
   title: "Nos Services | Securium Agency",
   description:
-    "Audit IT, création web et SEO technique : découvrez notre méthode de travail chez Securium Agency.",
+    "Audit IT, développement web sur-mesure et SEO technique : découvrez nos services et demandez votre devis gratuit.",
 };
 
 export default function ServicesPage() {

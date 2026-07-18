@@ -56,14 +56,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           "@type": "Article",
           headline: article.title,
           description: article.excerpt,
-          image: "https://www.securium-agency.fr/logo.png",
+          image: "https://www.securium-agency.fr/logo/securium-logo.png",
           datePublished: article.datePublished,
           dateModified: article.datePublished,
           author: { "@type": "Organization", name: "Securium Agency", url: "https://www.securium-agency.fr" },
           publisher: {
             "@type": "Organization",
             name: "Securium Agency",
-            logo: { "@type": "ImageObject", url: "https://www.securium-agency.fr/logo.png" },
+            logo: { "@type": "ImageObject", url: "https://www.securium-agency.fr/logo/securium-logo.png" },
           },
           mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
         }
